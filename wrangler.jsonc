@@ -1,13 +1,26 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "jose-pedro-lorenzini-dev",
+  "name": "lorenzini-dev",
   "compatibility_date": "2026-05-16",
+  "workers_dev": true,
+  "preview_urls": true,
   "observability": {
     "enabled": true
   },
   "assets": {
-    "directory": "."
+    "directory": "./public",
+    "not_found_handling": "404-page"
   },
+  "routes": [
+    {
+      "pattern": "lorenzini.dev/*",
+      "zone_name": "lorenzini.dev"
+    },
+    {
+      "pattern": "www.lorenzini.dev/*",
+      "zone_name": "lorenzini.dev"
+    }
+  ],
   "compatibility_flags": [
     "nodejs_compat"
   ]
