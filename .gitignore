@@ -8,3 +8,6 @@ text.sh
 !.dev.vars.example
 .env*
 !.env.example
+mccorkell-recommendation-letter-notion.md
+mccorkell-recommendation-letter-notion-draft.md
+node_modules
