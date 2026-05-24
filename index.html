@@ -1,451 +1,255 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jose Pedro Lorenzini  - Nomade</title>
-  <style>
-    :root {
-      --ink: #b8f7c4;
-      --muted: #78b986;
-      --line: #183d23;
-      --paper: #050806;
-      --surface: #07110a;
-      --surface-strong: #0b1810;
-      --terminal: #8cff9f;
-      --terminal-soft: #0b2112;
-      --terminal-dark: #d7ffdf;
-      --accent: #37ff73;
-      --body-text: #f2fff5;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: "Courier New", Consolas, "Liberation Mono", monospace;
-      color: var(--ink);
-      background: var(--paper);
-      line-height: 1.58;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: geometricPrecision;
-    }
-
-    main {
-      width: min(1080px, calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-    .hero {
-      min-height: 82vh;
-      display: grid;
-      align-content: center;
-      padding: 76px 0 56px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .kicker {
-      margin: 0 0 18px;
-      color: var(--accent);
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .kicker::before {
-      content: "$ ";
-    }
-
-    h1 {
-      max-width: 900px;
-      margin: 0;
-      color: var(--terminal-dark);
-      font-size: clamp(2.8rem, 6vw, 5.6rem);
-      line-height: 1;
-      letter-spacing: 0;
-      text-wrap: balance;
-    }
-
-    h1::before {
-      content: "> ";
-      color: var(--accent);
-    }
-
-    .lead {
-      max-width: 760px;
-      margin: 30px 0 0;
-      color: var(--ink);
-      font-size: clamp(1rem, 2vw, 1.18rem);
-    }
-
-    .meta-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      margin-top: 42px;
-      background: var(--line);
-      border: 1px solid var(--line);
-      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
-    }
-
-    .meta-item {
-      min-height: 112px;
-      padding: 18px;
-      background: var(--surface);
-      color: var(--ink);
-    }
-
-    .meta-item strong {
-      display: block;
-      margin-bottom: 6px;
-      color: var(--accent);
-      font-size: 0.78rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .meta-item strong::before {
-      content: "--";
-    }
-
-    section {
-      padding: 64px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    h2 {
-      max-width: 780px;
-      margin: 0 0 22px;
-      color: var(--terminal-dark);
-      font-size: clamp(1.8rem, 3.7vw, 3rem);
-      line-height: 1.08;
-      letter-spacing: 0;
-    }
-
-    h2::before {
-      content: "$ cat ";
-      color: var(--muted);
-      font-size: 0.72em;
-    }
-
-    h3 {
-      margin: 0 0 10px;
-      color: var(--accent);
-      font-size: 1.05rem;
-    }
-
-    h3::before {
-      content: "./";
-    }
-
-    p {
-      margin: 0 0 18px;
-      color: var(--body-text);
-    }
-
-    .content {
-      max-width: 820px;
-      color: var(--body-text);
-      font-size: 1rem;
-    }
-
-    .lead,
-    .meta-item,
-    .card,
-    .timeline-item,
-    .footer {
-      color: var(--body-text);
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 28px;
-    }
-
-    .card {
-      padding: 22px;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      box-shadow: inset 0 1px 0 rgba(140, 255, 159, 0.08);
-    }
-
-    .timeline {
-      display: grid;
-      gap: 14px;
-      margin-top: 28px;
-    }
-
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 140px 1fr;
-      gap: 24px;
-      padding: 24px;
-      border-top: 1px solid var(--line);
-      background: linear-gradient(90deg, rgba(11, 33, 18, 0.55), rgba(5, 8, 6, 0));
-    }
-
-    .year {
-      color: var(--accent);
-      font-weight: 800;
-    }
-
-    .year::before {
-      content: "[";
-    }
-
-    .year::after {
-      content: "]";
-    }
-
-    .quote {
-      margin: 34px 0 0;
-      padding: 24px;
-      color: var(--terminal-dark);
-      background: var(--surface-strong);
-      border: 1px solid var(--line);
-      border-left: 4px solid var(--accent);
-      border-radius: 6px;
-      font-size: 1.04rem;
-      font-weight: 650;
-    }
-
-    .quote::before {
-      content: "# ";
-    }
-
-    .pillars {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      margin-top: 28px;
-    }
-
-    .footer {
-      padding: 34px 0 54px;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    a {
-      color: var(--terminal-dark);
-      text-decoration: underline;
-      text-decoration-style: dotted;
-    }
-
-    @media (max-width: 860px) {
-      .meta-grid,
-      .cards,
-      .pillars {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 640px) {
-      main {
-        width: min(100% - 24px, 1100px);
-      }
-
-      .hero {
-        min-height: auto;
-        padding-top: 54px;
-      }
-
-      .meta-grid,
-      .cards,
-      .pillars,
-      .timeline-item {
-        grid-template-columns: 1fr;
-      }
-
-      .timeline-item {
-        gap: 6px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <main>
-    <header class="hero">
-      <p class="kicker">Professional Biography</p>
-      <h1>Jose Pedro Lorenzini</h1>
-      <p class="lead">
-        A Chilean-Australian digital architect, designer, photographer, and software professional whose career has moved across Chile, Australia, and Europe through web development, open-source tools, remote collaboration, and independent digital strategy.
-      </p>
-
-      <div class="meta-grid" aria-label="Career summary">
-        <div class="meta-item">
-          <strong>Identity</strong>
-          Digital architect, web developer, designer, and photographer.
-        </div>
-        <div class="meta-item">
-          <strong>Studio</strong>
-          Founder of Estudio Viento del Sur, operating from 2009.
-        </div>
-        <div class="meta-item">
-          <strong>Base</strong>
-          Valparaiso, Chile and Sydney, Australia.
-        </div>
-        <div class="meta-item">
-          <strong>Philosophy</strong>
-          Digital freedom, open-source culture, and user autonomy.
-        </div>
-      </div>
-    </header>
-
-    <section>
-      <h2>A Second-Wave Digital Pioneer</h2>
-      <div class="content">
-        <p>
-          Jose Pedro Lorenzini belongs to the second wave of the web: the generation that arrived after the first technical builders of internet infrastructure and began shaping how people, businesses, and creative workers could actually live and work through the web.
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jose Lorenzini - Nomade</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <main>
+      <header class="hero">
+        <p class="kicker">Professional Biography</p>
+        <h1>Jose Pedro Lorenzini</h1>
+        <p class="lead">
+          A Chilean-Italian digital architect, designer, photographer, and
+          software professional whose career has moved across Chile, Australia,
+          and Europe through web development, open-source tools, remote
+          collaboration, and independent digital strategy.
         </p>
-        <p>
-          His contribution is not framed as the invention of the Chilean internet itself, but as part of the next chapter: bringing design, usability, content management, remote service delivery, and digital independence into the daily life of small businesses, creative studios, and international clients.
-        </p>
-        <p>
-          Through Estudio Viento del Sur, founded in 2009, Jose built a remote-first digital practice before remote work became a global norm. His path connected Valparaiso and Sydney through websites, content systems, client strategy, and a working model based on trust, agility, and cross-cultural collaboration.
-        </p>
-        <div class="quote">
-          If the first wave of the web was about connectivity, Jose's second wave has been about autonomy: helping people use the web to work, publish, grow, and move freely.
-        </div>
-      </div>
-    </section>
 
-    <section>
-      <h2>The Three-Continent Lifestyle</h2>
-      <div class="cards">
-        <article class="card">
-          <h3>Chile: The Creative Foundation</h3>
-          <p>
-            Jose's creative roots began in Chile, where he studied Photography and Graphic Design at Instituto Profesional ARCOS. That formation gave his digital work a strong visual foundation: composition, image culture, communication, and sensitivity to how people experience what they see.
-          </p>
-          <p>
-            In Valparaiso, he developed Viento del Sur as a studio focused on practical digital tools, self-managed websites, and web solutions that helped clients participate more confidently in the digital economy.
-          </p>
-        </article>
-
-        <article class="card">
-          <h3>Australia: The Technical Evolution</h3>
-          <p>
-            In Sydney, Jose expanded his creative practice into a more technical professional identity. His Australian chapter strengthened his software development, JavaScript, web programming, and modern delivery standards.
-          </p>
-          <p>
-            This made his profile unusually hybrid: a designer with a photographer's eye, a developer's logic, and the ability to translate between business goals, visual systems, and working code.
-          </p>
-        </article>
-
-        <article class="card">
-          <h3>Europe: The Philosophical Edge</h3>
-          <p>
-            Jose's European experience added an independent, open-source, craft-oriented dimension to his practice. It reinforced a belief that digital tools should empower users instead of locking them into closed systems.
-          </p>
-          <p>
-            This influence shaped a working style based on portability, transparency, self-management, and digital freedom.
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <section>
-      <h2>Career Narrative</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="year">Creative roots</div>
-          <div>
-            <h3>Photography and graphic design</h3>
-            <p>
-              Jose built his foundation in visual culture through Photography and Graphic Design studies at ARCOS in Chile. This background continues to inform the way he approaches user experience, layout, interface, and brand presence.
-            </p>
+        <div class="meta-grid" aria-label="Career summary">
+          <div class="meta-item">
+            <strong>Identity</strong>
+            Digital architect,Full stack Web developer, designer, and
+            photographer.
+          </div>
+          <div class="meta-item">
+            <strong>Studio</strong>
+            Founder of Estudio Viento del Sur, operating from 2009.
+          </div>
+          <div class="meta-item">
+            <strong>Base</strong>
+            Valparaiso, Chile and Sydney, Australia.
+          </div>
+          <div class="meta-item">
+            <strong>Philosophy</strong>
+            Digital freedom, open-source culture, and user autonomy.
           </div>
         </div>
+      </header>
 
-        <div class="timeline-item">
-          <div class="year">2009</div>
-          <div>
-            <h3>Estudio Viento del Sur</h3>
-            <p>
-              He founded Estudio Viento del Sur as a digital solutions studio focused on web development, CMS management, digital strategy, and client autonomy. The studio became a vehicle for independent, remote, and cross-border digital work.
-            </p>
+      <section>
+        <h2>A Second-Wave Digital Pioneer</h2>
+        <div class="content">
+          <p>
+            Jose Pedro Lorenzini belongs to the second wave of the web: the
+            generation that arrived after the first technical builders of
+            internet infrastructure and began shaping how people, businesses,
+            and creative workers could actually live and work through the web.
+          </p>
+          <p>
+            His contribution is not framed as the invention of the Chilean
+            internet itself, but as part of the next chapter: bringing design,
+            usability, content management, remote service delivery, and digital
+            independence into the daily life of small businesses, creative
+            studios, and international clients.
+          </p>
+          <p>
+            Through Estudio Viento del Sur, founded in 2009, Jose built a
+            remote-first digital practice before remote work became a global
+            norm. His path connected Valparaiso and Sydney through websites,
+            content systems, client strategy, and a working model based on
+            trust, agility, and cross-cultural collaboration.
+          </p>
+          <div class="quote">
+            If the first wave of the web was about connectivity, Jose's second
+            wave has been about autonomy: helping people use the web to work,
+            publish, grow, and move freely.
           </div>
         </div>
+      </section>
 
-        <div class="timeline-item">
-          <div class="year">Chile / Australia</div>
-          <div>
-            <h3>A trans-Pacific working model</h3>
+      <section>
+        <h2>The Three-Continent Lifestyle</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>Chile: The Creative Foundation</h3>
             <p>
-              By operating between Valparaiso and Sydney, Jose developed a professional model that combined Chilean creative flexibility with Australian technical expectations. This positioned him as a bridge between markets, cultures, and ways of working.
+              Jose's creative roots began in Chile, where he studied Photography
+              and Graphic Design at Instituto Profesional ARCOS. That formation
+              gave his digital work a strong visual foundation: composition,
+              image culture, communication, and sensitivity to how people
+              experience what they see.
             </p>
+            <p>
+              In Valparaiso, he developed Viento del Sur as a studio focused on
+              practical digital tools, self-managed websites, and web solutions
+              that helped clients participate more confidently in the digital
+              economy.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Australia: The Technical Evolution</h3>
+            <p>
+              In Sydney, Jose expanded his creative practice into a more
+              technical professional identity. His Australian chapter
+              strengthened his software development, JavaScript, web
+              programming, and modern delivery standards.
+            </p>
+            <p>
+              This made his profile unusually hybrid: a designer with a
+              photographer's eye, a developer's logic, and the ability to
+              translate between business goals, visual systems, and working
+              code.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Europe: The Philosophical Edge</h3>
+            <p>
+              Jose's European experience added an independent, open-source,
+              craft-oriented dimension to his practice. It reinforced a belief
+              that digital tools should empower users instead of locking them
+              into closed systems.
+            </p>
+            <p>
+              This influence shaped a working style based on portability,
+              transparency, self-management, and digital freedom.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>Career Narrative</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="year">Creative roots</div>
+            <div>
+              <h3>Photography and graphic design</h3>
+              <p>
+                Jose built his foundation in visual culture through Photography
+                and Graphic Design studies at ARCOS in Chile. This background
+                continues to inform the way he approaches user experience,
+                layout, interface, and brand presence.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="year">2009</div>
+            <div>
+              <h3>Estudio Viento del Sur</h3>
+              <p>
+                He founded Estudio Viento del Sur as a digital solutions studio
+                focused on web development, CMS management, digital strategy,
+                and client autonomy. The studio became a vehicle for
+                independent, remote, and cross-border digital work.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="year">Chile / Australia</div>
+            <div>
+              <h3>A trans-Pacific working model</h3>
+              <p>
+                By operating between Valparaiso and Sydney, Jose developed a
+                professional model that combined Chilean creative flexibility
+                with Australian technical expectations. This positioned him as a
+                bridge between markets, cultures, and ways of working.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="year">Ongoing</div>
+            <div>
+              <h3>Continuous reinvention</h3>
+              <p>
+                Jose's career has continued to evolve through software
+                programming, JavaScript, web systems, content platforms, and
+                modern digital workflows. His profile is defined by constant
+                learning rather than a fixed professional label.
+              </p>
+            </div>
           </div>
         </div>
+      </section>
 
-        <div class="timeline-item">
-          <div class="year">Ongoing</div>
-          <div>
-            <h3>Continuous reinvention</h3>
+      <section>
+        <h2>Professional Pillars</h2>
+        <div class="pillars">
+          <article class="card">
+            <h3>Multidisciplinary practice</h3>
             <p>
-              Jose's career has continued to evolve through software programming, JavaScript, web systems, content platforms, and modern digital workflows. His profile is defined by constant learning rather than a fixed professional label.
+              Jose brings together photography, graphic design, UX thinking,
+              front-end development, CMS implementation, and software
+              programming.
             </p>
-          </div>
+          </article>
+          <article class="card">
+            <h3>Remote-first independence</h3>
+            <p>
+              His career anticipated the modern digital nomad model by showing
+              that high-quality digital work can happen across cities,
+              countries, and time zones.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Open-source values</h3>
+            <p>
+              His work favors accessible, self-managed systems that give clients
+              control over their own digital presence.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Human-centered web</h3>
+            <p>
+              Jose's approach treats websites as living tools for communication,
+              business growth, and user empowerment, not just technical
+              products.
+            </p>
+          </article>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section>
-      <h2>Professional Pillars</h2>
-      <div class="pillars">
-        <article class="card">
-          <h3>Multidisciplinary practice</h3>
+      <section>
+        <h2>Legacy and Recognition</h2>
+        <div class="content">
           <p>
-            Jose brings together photography, graphic design, UX thinking, front-end development, CMS implementation, and software programming.
+            Jose Pedro Lorenzini's career can be understood as a long-term
+            experiment in freedom, adaptability, and digital craft. He has used
+            the web not only as a production medium, but as a way to build a
+            life across continents.
           </p>
-        </article>
-        <article class="card">
-          <h3>Remote-first independence</h3>
           <p>
-            His career anticipated the modern digital nomad model by showing that high-quality digital work can happen across cities, countries, and time zones.
+            In the Chilean context, his story belongs to the second wave of web
+            pioneers: professionals who helped move the web from infrastructure
+            into culture, business, design, and everyday self-management. In
+            Australia, his value lies in the transfer of international creative
+            and technical skills into a demanding digital market. In Europe, his
+            practice connects with open-source ethics, independence, and the
+            digital artisan tradition.
           </p>
-        </article>
-        <article class="card">
-          <h3>Open-source values</h3>
           <p>
-            His work favors accessible, self-managed systems that give clients control over their own digital presence.
+            The result is a career defined by mobility, reinvention, and
+            practical innovation: a global network replacing the traditional
+            office, a hybrid skillset replacing the single discipline, and a
+            philosophy of digital autonomy replacing dependency.
           </p>
-        </article>
-        <article class="card">
-          <h3>Human-centered web</h3>
-          <p>
-            Jose's approach treats websites as living tools for communication, business growth, and user empowerment, not just technical products.
-          </p>
-        </article>
-      </div>
-    </section>
+        </div>
+      </section>
 
-    <section>
-      <h2>Legacy and Recognition</h2>
-      <div class="content">
+      <footer class="footer">
         <p>
-          Jose Pedro Lorenzini's career can be understood as a long-term experiment in freedom, adaptability, and digital craft. He has used the web not only as a production medium, but as a way to build a life across continents.
+          Bio page for Jose Pedro Lorenzini. Prepared as a professional
+          narrative for public profile, portfolio, recognition, and future
+          career documentation.
         </p>
-        <p>
-          In the Chilean context, his story belongs to the second wave of web pioneers: professionals who helped move the web from infrastructure into culture, business, design, and everyday self-management. In Australia, his value lies in the transfer of international creative and technical skills into a demanding digital market. In Europe, his practice connects with open-source ethics, independence, and the digital artisan tradition.
-        </p>
-        <p>
-          The result is a career defined by mobility, reinvention, and practical innovation: a global network replacing the traditional office, a hybrid skillset replacing the single discipline, and a philosophy of digital autonomy replacing dependency.
-        </p>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <p>
-        Bio page for Jose Pedro Lorenzini. Prepared as a professional narrative for public profile, portfolio, recognition, and future career documentation.
-      </p>
-    </footer>
-  </main>
-</body>
+      </footer>
+    </main>
+  </body>
 </html>
