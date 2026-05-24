@@ -272,5 +272,21 @@
         </div>
       </footer>
     </main>
+    <script>
+      const bodyTag = document.querySelector("body");
+      console.log("Body element:", bodyTag);
+
+      bodyTag.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth",
+      });
+
+      /*
+      window.scrollTo({
+        top:      document.body.scrollHeight, 
+        behavior: "smooth" 
+    });
+      */
+    </script>
   </body>
 </html>

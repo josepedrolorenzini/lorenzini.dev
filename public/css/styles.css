@@ -11,6 +11,9 @@
   --accent: #37ff73;
   --body-text: #f2fff5;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 * {
   box-sizing: border-box;
