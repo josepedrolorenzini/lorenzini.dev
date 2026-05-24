@@ -1,6 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "lorenzini-dev",
+  "main": "./src/script.js",
   "compatibility_date": "2026-05-16",
   "workers_dev": true,
   "preview_urls": true,
@@ -11,29 +12,28 @@
       "enabled": true,
       "head_sampling_rate": 1,
       "persist": true,
-      "invocation_logs": true
+      "invocation_logs": true,
     },
     "traces": {
       "enabled": false,
       "persist": true,
-      "head_sampling_rate": 1
-    }
+      "head_sampling_rate": 1,
+    },
   },
   "assets": {
     "directory": "./public",
-    "not_found_handling": "404-page"
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
   },
   "routes": [
     {
       "pattern": "lorenzini.dev/*",
-      "zone_name": "lorenzini.dev"
+      "zone_name": "lorenzini.dev",
     },
     {
       "pattern": "www.lorenzini.dev/*",
-      "zone_name": "lorenzini.dev"
-    }
+      "zone_name": "lorenzini.dev",
+    },
   ],
-  "compatibility_flags": [
-    "nodejs_compat"
-  ]
+  "compatibility_flags": ["nodejs_compat"],
 }
