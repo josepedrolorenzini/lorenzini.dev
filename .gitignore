@@ -11,3 +11,9 @@ text.sh
 mccorkell-recommendation-letter-notion.md
 mccorkell-recommendation-letter-notion-draft.md
 node_modules
+# local/dev artifacts
+lorenzini-dev-old/
+.next/
+.pnpm-store/
+node_modules/
+*.tsbuildinfo

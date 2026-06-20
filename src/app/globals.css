@@ -9,7 +9,12 @@
   --terminal-soft: #0b2112;
   --terminal-dark: #d7ffdf;
   --accent: #37ff73;
+  --hue-1: #37ff73;
   --body-text: #f2fff5;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 * {
@@ -29,6 +34,12 @@ body {
 main {
   width: min(1080px, calc(100% - 40px));
   margin: 0 auto;
+}
+
+.hero,
+.scroll-section,
+.footer {
+  width: 100%;
 }
 
 .hero {
@@ -74,6 +85,14 @@ h1::before {
   font-size: clamp(1rem, 2vw, 1.18rem);
 }
 
+.meta-grid,
+.cards,
+.timeline,
+.pillars,
+.content {
+  width: 100%;
+}
+
 .meta-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -105,8 +124,16 @@ h1::before {
 }
 
 section {
+  width: 100%;
   padding: 64px 0;
   border-bottom: 1px solid var(--line);
+}
+
+.scroll-section {
+  padding: 150px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 h2 {
@@ -225,6 +252,16 @@ p {
   font-size: 0.95rem;
 }
 
+.footer-inner {
+  margin: 10px 0;
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
 a {
   color: var(--terminal-dark);
   text-decoration: underline;
@@ -247,6 +284,10 @@ a {
   .hero {
     min-height: auto;
     padding-top: 54px;
+  }
+
+  .scroll-section {
+    padding: 92px 0;
   }
 
   .meta-grid,

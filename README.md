@@ -1,31 +1,36 @@
-# Estudio Viento del Sur
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Overview
+## Getting Started
 
-**Viento del Sur** ( [www.vientodelsur.cl](https://www.vientodelsur.cl) ) is a digital‑solutions and design agency founded in 2009. It operates from two hubs – **Valparaíso, Chile** and **Sydney, Australia** – and helps businesses grow through innovative technology and strategic digital tools.
+First, run the development server:
 
-## Services
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-- **Web Development** – End‑to‑end implementation and management of modern web solutions.
-- **CMS Management** – Expert setup and maintenance of content‑management systems, enabling clients to self‑manage their sites.
-- **Business Strategy** – Guiding future vision, strengthening client relationships, and aligning digital tactics with business goals.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Portfolio
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-The agency showcases a curated portfolio of past projects directly on the site. You can explore the work at:
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-- [Portfolio page](https://www.vientodelsur.cl/portfolio)
-- [Github page](https://github.com/jose-pedro-lorenzini)
+## Learn More
 
-## Contact Information
+To learn more about Next.js, take a look at the following resources:
 
-| Location              | Details                              |
-| --------------------- | ------------------------------------ |
-| **Valparaíso, Chile** | Email: <josephlorenzini81@yahoo.com> |
-| Phone: ---            |
-| **Sydney, Australia** | Email: <info@vientodelsur.cl>        |
-| Phone: +61426239808   |
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## Note
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## _“Viento del Sur” is Coming from the heart of Patagonia, a Chilean Web Digital Nomade Agency._
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
