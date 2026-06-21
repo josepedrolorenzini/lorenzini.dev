@@ -31,7 +31,7 @@ const trencadisItem = {
 } as const;
 
 const organicHover = {
-  scale: 1.02,
+  scale: 1.2,
   rotate: 0.5,
   transition: { type: "spring", stiffness: 200, damping: 10 },
 } as const;
@@ -73,8 +73,13 @@ export default function Header() {
         Professional Biography
       </motion.p>
 
-      <motion.h1 drag dragMomentum={false} whileDrag={dragInteraction}>
-        Jose Pedro Lorenzini
+      <motion.h1
+        drag
+        dragMomentum={false}
+        whileDrag={dragInteraction}
+        dragSnapToOrigin
+      >
+        JosePedro Lorenzini
       </motion.h1>
 
       <motion.p
@@ -85,10 +90,11 @@ export default function Header() {
         whileHover={organicHover}
       >
         A Chilean-Italian Full Stack Web Developer professional + Digital
-        Multimedia Web Architect, designer and photographer whose career has
-        moved across Chile, Latam, California, Australia, Spain and France
-        through web development, open-source tools, Web 3, Cloud computing,
-        remote collaboration, and independent digital strategy.
+        Multimedia Web Architect, Graphic Designer and Photographer whose career
+        has moved across Chile, Latinoamerica, California, Australia & New
+        Zealand, Spain and France through web development, open-source tools,
+        Web 3, Cloud computing, remote Friendship collaboration, and independent
+        digital strategy.
       </motion.p>
 
       <motion.div
@@ -120,7 +126,7 @@ export default function Header() {
           whileDrag={dragInteraction}
         >
           <strong>Studio</strong>
-          Founder of Estudio Viento del Sur, operating from 2009.
+          vientodelsur.cl, operating from 2009.
         </motion.div>
 
         <motion.div
@@ -132,7 +138,7 @@ export default function Header() {
           whileDrag={dragInteraction}
         >
           <strong>Base</strong>
-          Valparaiso, Chile and Sydney, Australia.
+          Sydney, Australia.
         </motion.div>
 
         <motion.div

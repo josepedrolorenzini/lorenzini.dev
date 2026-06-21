@@ -11,6 +11,7 @@
   --accent: #37ff73;
   --hue-1: #37ff73;
   --body-text: #f2fff5;
+  --white-css: #fff;
 }
 
 html {
@@ -66,7 +67,7 @@ main {
 h1 {
   max-width: 900px;
   margin: 0;
-  color: var(--terminal-dark);
+  color: var(--white-css);
   font-size: clamp(2.8rem, 6vw, 5.6rem);
   line-height: 1;
   letter-spacing: 0;
