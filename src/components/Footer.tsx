@@ -1,3 +1,5 @@
+import { motion } from "motion/react";
+
 export default function Footer() {
   return (
     <footer className="footer">
@@ -18,7 +20,7 @@ export default function Footer() {
           GitHub
         </a>
         <a
-          href="https://www.linkedin.com/in/jose-pedro-lorenzini/"
+          href="https://www.linkedin.com/in/jose-pedro-lorenzini-/"
           rel="noopener"
           target="_blank"
         >
